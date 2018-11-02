@@ -6,7 +6,7 @@ este será un compilador utilizado como herramienta de aprendizaje.
 Compilará código con la siguiente forma:
 
 nombre_funcion1(par1,par2,...,parN) {
-  return expr;
+  RETURN expr;
 }
 
 ...
@@ -32,9 +32,9 @@ por ende de poder combinarse adecuadamente, que ciertos conflictos a tratar son:
 
 .es imprescindible que, por motivos de temprano diseño, se respeten de manera absoluta e impoluta las reglas de precedencia utilizando paréntesis para ello.
 
-EJ. ERRÓNEO: return par1 * par2 *
+EJ. ERRÓNEO: RETURN par1 * par2 *
 ;
-EJ.ERRÓNEO2: return (par1 + par2 +) * (par3/par3);
+EJ.ERRÓNEO2: RETURN (par1 + par2 +) * (par3/par3);
 
-EJ.CORRECTO: return par1 * par2;
-EJ.CORRECTO2: return (par1 + par2) * (par3/par3);
+EJ.CORRECTO: RETURN (par1*par2);
+EJ.CORRECTO2: RETURN ((par1 + par2)*(par3/par3));
