@@ -5,35 +5,45 @@ LETRA             [a-z]
 ENTERO            [0-9]+
 
 
+PARA SOLVENTAR EL CONFLICTO DE LAS EXPRESIONES, NOS PROPONEMOS A HALLAR UN FORMATO DE EXPRESIONES REGULARES ACEPTABLE    
+    
+w = ['(']?(0-9)*·(OP·(0-9)*)*
+98+47*24-32[')']?
+
+ejemplos aceptadores:
+
+(9+32)^3-4+6^7
+
+123*124-12+7
+
+
 CONSIDEREMOS UNA VARIABLE INICIAL T
 
-T                    --->   SOESL · funciones · SOESL· '%' · SOESL · calculos · SOESL · "%"
+T                    --->   SOESL · funciones · SOESL· SEPARADOR · SOESL · calculos · SOESL · SEPARADOR
 
 /*
 SOESL: secuencia obviable de espacios y saltos de línea
 */
 
   funciones           --->    funcion · SOESL · funciones | #
-   funcion             --->    declaracion_funcion · SOESL ·'{'· SOESL · definicion_funcion · SOESL · "};"
+   funcion             --->    declaracion_funcion · SOESL · CLAUDOP · SOESL · definicion_funcion · SOESL · CLAUDCL · FIN
   
-    declaracion_funcion  --->    nombre_funcion · '(' · parametros_funcion · ')'
+    declaracion_funcion  --->    nombre_funcion · PARENOP · parametros_funcion · PARENCL
       nombre_funcion      --->    LETRA · finnombre
                                   finnombre   --->    LETRA · finnombre | #
-      parametros_funcion  --->    parametro · ',' · parametros_funcion | parametro | #
+      parametros_funcion  --->    parametro · COMMA · parametros_funcion | parametro | #
         parametro           --->    LETRA · finparam | ENTERO · finparam
                                     finparam  --->    LETRA · finparam | ENTERO · finparam | #
     
-    definicion_funcion   --->    "return" · SOESL · expr · ';'
-      expr                --->     null | oprnd | '(' · exprp · ')'
-        exprp              --->     oprnd | oprnd · oprdr · exprp
-        oprnd              --->     CONSTANTE | parametro
-                                    CONSTANTE     --->    ENTERO
-        oprdr              --->     '+' | '-' | '*' | '/' | '^' | 'log'
+    definicion_funcion   --->    RETURN · SOESL · expr · FIN
+      expr                --->     oprnd · exprext1 | PARENOP · oprnd · exprext2
+        exprext1             --->    oprdr · exprext11 | 
+          exprext11           --->    oprnd
         
   
   calculos              --->    calculo · SOESL · calculos | #
-    calculo               --->   "RETURN" · SOESL · nombre_funcion · '(' · valores_param · ");"
-      valores_param         --->    valor · ',' · valores_param | #
+    calculo               --->   RETURN · SOESL · nombre_funcion · CLAUDOP · valores_param · ");"
+      valores_param         --->    valor · COMMA · valores_param | #
                                     valor   --->    CONSTANTE
     
         
