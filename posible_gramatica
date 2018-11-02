@@ -26,13 +26,17 @@ PARENCL           ')'
 
 
 
-CONSIDEREMOS UNA VARIABLE INICIAL T
-
-T                    --->   SOESL · funciones · SOESL· SEPARADOR · SOESL · calculos · SOESL · SEPARADOR
-
 /*
 SOESL: secuencia obviable de espacios y saltos de línea
 */
+
+
+
+CONSIDEREMOS UNA VARIABLE INICIAL T
+
+
+T                    --->   SOESL · funciones · SOESL· SEPARADOR · SOESL · calculos · SOESL · SEPARADOR
+
 
   funciones           --->    funcion · SOESL · funciones | #
    funcion             --->    declaracion_funcion · SOESL · CLAUDOP · SOESL · definicion_funcion · SOESL · CLAUDCL · FIN
