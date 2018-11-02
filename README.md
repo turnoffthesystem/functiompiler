@@ -12,11 +12,12 @@ nombre_funcion1(par1,par2,...,parN) {
 ...
 nombre_funcionN(...
 
-;
+%
 
 RETURN funcioni(ct1,...,ctN);
 RETURN funcionj(ct1,...,ctN);
-;;
+
+%
 
 DONDE "expr" tomará la forma de una operación entre los parámetros u OPERANDOS EN GENERAL (EN EL CASO DE LA GRAMÁTICA, SE VERÁ QUE YA SE TRATA LA POSIBILIDAD DE CONSTANTES Y MAYOR VARIEDAD DE OPERANDOS), permitiendo:
 -     par1 + par2 + ... parN
