@@ -1,11 +1,17 @@
+E.R ASOCIADAS --
+
+SOESL             [' ''\n']*
+LETRA             [a-z]
+ENTERO            [0-9]+
+
+
 CONSIDEREMOS UNA VARIABLE INICIAL T
 
 T                    --->   SOESL · funciones · SOESL· '%' · SOESL · calculos · SOESL · "%"
 
 /*
-secuencia obviable de espacios y saltos de línea
+SOESL: secuencia obviable de espacios y saltos de línea
 */
-SOESL   --->    ' '·SOESL | '\n'·SOESL | #
 
   funciones           --->    funcion · SOESL · funciones | #
    funcion             --->    declaracion_funcion · SOESL ·'{'· SOESL · definicion_funcion · SOESL · "};"
