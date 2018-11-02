@@ -1,0 +1,18 @@
+CONSIDEREMOS UNA VARIABLE INICIAL T
+
+T                    --->   declaraciones · ';' · cálculos · ";;"
+
+  declaraciones        --->    declaracion_funcion · SOESL ·'{'· definicion_funcion ·'}'· SOESL · ';'
+  
+    declaracion_funcion  --->    nombre_funcion · '(' · parametros_funcion · ')'
+      nombre_funcion      --->    LETRA · finnombre
+                                  finnombre   --->    LETRA · finnombre | #
+      parametros_funcion  --->    parametro · ',' · parametros_funcion | parametro | #
+        parametro           --->    LETRA · finparam | ENTERO · finparam
+                                    finparam  --->    LETRA · finparam | ENTERO · finparam | #
+    
+    definicion_funcion   --->    "return" · SOESL · expr · ';'
+      expr                --->     null | oprnd | '(' · expr · oprdr · expr · ')'
+        oprnd              --->     CONSTANTE | parametro
+                                    CONSTANTE     --->    ENTERO
+        
