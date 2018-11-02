@@ -36,9 +36,9 @@ SOESL: secuencia obviable de espacios y saltos de línea
                                     finparam  --->    LETRA · finparam | ENTERO · finparam | #
     
     definicion_funcion   --->    RETURN · SOESL · expr · FIN
-      expr                --->     oprnd · exprext1 | PARENOP · oprnd · exprext2
-        exprext1             --->    oprdr · exprext11 | 
-          exprext11           --->    oprnd
+      expr                --->     NULL | exprnotnull
+      exprnotnull         --->     oprnd | oprnd · exprnotnullext | PARENOP · exprnotnull · PARENCL
+        exprnotnullext             --->    oprdr · exprnotnull
         
   
   calculos              --->    calculo · SOESL · calculos | #
