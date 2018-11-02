@@ -1,8 +1,14 @@
 CONSIDEREMOS UNA VARIABLE INICIAL T
 
-T                    --->   declaraciones · ';' · cálculos · ";;"
+T                    --->   SOESL · funciones · SOESL· '%' · SOESL · calculos · SOESL · "%"
 
-  declaraciones        --->    declaracion_funcion · SOESL ·'{'· definicion_funcion ·'}'· SOESL · ';'
+/*
+secuencia obviable de espacios y saltos de línea
+*/
+SOESL   --->    ' '·SOESL | '\n'·SOESL | #
+
+  funciones           --->    funcion · SOESL · funciones | #
+   funcion             --->    declaracion_funcion · SOESL ·'{'· SOESL · definicion_funcion · SOESL · "};"
   
     declaracion_funcion  --->    nombre_funcion · '(' · parametros_funcion · ')'
       nombre_funcion      --->    LETRA · finnombre
@@ -12,7 +18,16 @@ T                    --->   declaraciones · ';' · cálculos · ";;"
                                     finparam  --->    LETRA · finparam | ENTERO · finparam | #
     
     definicion_funcion   --->    "return" · SOESL · expr · ';'
-      expr                --->     null | oprnd | '(' · expr · oprdr · expr · ')'
+      expr                --->     null | oprnd | '(' · exprp · ')'
+        exprp              --->     oprnd | oprnd · oprdr · exprp
         oprnd              --->     CONSTANTE | parametro
                                     CONSTANTE     --->    ENTERO
+        oprdr              --->     '+' | '-' | '*' | '/' | '^' | 'log'
+        
+  
+  calculos              --->    calculo · SOESL · calculos | #
+    calculo               --->   "RETURN" · SOESL · nombre_funcion · '(' · valores_param · ");"
+      valores_param         --->    valor · ',' · valores_param | #
+                                    valor   --->    CONSTANTE
+    
         
